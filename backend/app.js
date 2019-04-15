@@ -5,7 +5,9 @@ const db = require("./db/db");
 
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
-
+const questionRoutes = require("./routes/question");
+const answerRoutes = require("./routes/answer");
+const optionRoutes = require("./routes/option");
 const app = express();
 
 
@@ -28,6 +30,9 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/posts", postsRoutes);
+app.use("/api/question", questionRoutes);
+app.use("/api/answer", answerRoutes);
+app.use("/api/option", optionRoutes);
 app.use("/api/user", userRoutes);
 
 module.exports = app;
