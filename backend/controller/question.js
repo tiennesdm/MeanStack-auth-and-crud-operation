@@ -24,3 +24,18 @@ exports.createquestion =   (req, res, next) => {
       });
     });
 }
+exports.getallQuestion = (req, res, next) => {
+  Question.find({})
+    .then(question => {
+      if (question) {
+        res.status(200).json(question);
+      } else {
+        res.status(404).json({ message: "Question not found!" });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "Fetching Answer failed!"
+      });
+    });
+}
