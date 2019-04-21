@@ -3,42 +3,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {
-  MatInputModule,
-  MatCardModule,
-  MatButtonModule,
-  MatToolbarModule,
-  MatExpansionModule,
-  MatProgressSpinnerModule,
-  MatPaginatorModule,
-  MatDialogModule,
-  MatCheckboxModule
-} from '@angular/material';
-
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { AppComponent } from './app.component';
-import { ListComponent } from './list/list.component';
-import { PostlistComponent } from './list/postlist/postlist.component';
-import { FetchlistComponent } from './list/fetchlist/fetchlist.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
-import { QuestionComponent } from './list/question/question.component';
+import {AngularMaterialForm} from './angular-material.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
     HeaderComponent,
-    PostlistComponent,
-    FetchlistComponent,
     LoginComponent,
     SignupComponent,
     ErrorComponent,
-    QuestionComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,15 +27,7 @@ import { QuestionComponent } from './list/question/question.component';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatExpansionModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule,
-    MatDialogModule,
-    MatCheckboxModule,
+    AngularMaterialForm,
     HttpClientModule
   ],
   providers: [

@@ -1,7 +1,4 @@
 const express = require("express");
-
-
-//const Post = require("../models/post");
 const checkAuth = require("../middleware/check-auth");
 const addQuestionController = require("../controller/addQuestion");
 

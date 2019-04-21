@@ -1,8 +1,6 @@
 const Question = require("../models/question");
 const Answer = require("../models/answer");
 const Option = require("../models/option");
-const {createanswer} = require("./answer");
-const {createoption} = require("./option")
 exports.createQuestion = async (req, res, next) => {
   console.log(req.body.option);
   const option = new Option({

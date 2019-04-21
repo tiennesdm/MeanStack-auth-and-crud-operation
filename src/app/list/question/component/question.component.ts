@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, ValidationErrors, Validator } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../../auth/auth.service';
-import {QuestionService} from '../question/services/question.service';
+import { AuthService } from '../../../auth/auth.service';
+import {QuestionService} from '../services/question.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -46,7 +46,7 @@ export class QuestionComponent implements OnInit {
     if (f.invalid) {
       return null;
     }
-    this.isLoading = true;
+
     console.log('form value', f.value);
     if(f.value.answerA === true){
       this.answerArray.push(this.optionA);
@@ -71,6 +71,7 @@ export class QuestionComponent implements OnInit {
       this.questionArray = [];
     }
     else{
+      this.isLoading = true;
       this.questionArray.push(f.value.optionA, f.value.optionB, f.value.optionC, f.value.optionD);
       this.questionService.addQuestion(f.value.question, this.questionArray, this.answerArray);
       this.message = '' ;
