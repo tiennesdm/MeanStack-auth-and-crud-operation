@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form  #f="ngForm" (ngSubmit)="onAddQuestion(f)" *ngIf="!isLoading">
+      <mat-form-field>
+          <input matInput  placeholder="Enter the Question"
+          name="question"
+          question
+          ngModel
+          #question="ngModel"
+
+          name="question" required>
+
+       </mat-form-field>
+
+       <section>
+      <mat-checkbox [(ngModel)]="answerA" name="answerA">
+    <mat-form-field>
+       <input matInput  placeholder="Option A" required name="optionA"
+       [(ngModel)]="optionA">
+
+    </mat-form-field>
+
+  </mat-checkbox>
+  <mat-checkbox [(ngModel)]="answerB" name="answerB">
+    <mat-form-field >
+      <input matInput  placeholder="Option B"  [(ngModel)]="optionB" name="optionB" required>
+
+    </mat-form-field>
+  </mat-checkbox>
+  <mat-checkbox [(ngModel)]="answerC" name="answerC">
+      <mat-form-field >
+        <input matInput  placeholder="Option C"  [(ngModel)]="optionC" name="optionC"required>
+
+      </mat-form-field>
+    </mat-checkbox>
+    <mat-checkbox [(ngModel)]="answerD" name="answerD">
+        <mat-form-field >
+          <input matInput  placeholder="Option D" [(ngModel)]="optionD" name="optionD" required>
+
+        </mat-form-field>
+      </mat-checkbox>
+    </section>
+
+    <button mat-raised-button color="accent" type="submit" [disabled]="!f.valid" >Add Question</button>
+  </form>
+  <b class="errors" *ngIf="answerArray.length<=0">{{message}}</b>
+</mat-card>

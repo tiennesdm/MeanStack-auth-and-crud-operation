@@ -1,0 +1,19 @@
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+button{
+  align-self: auto;
+  margin: auto;
+
+}
+.errors{
+  padding-top: 10px;
+  margin-top: 10px;
+  margin: auto;
+  color: red;
+}

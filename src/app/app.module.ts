@@ -11,7 +11,8 @@ import {
   MatExpansionModule,
   MatProgressSpinnerModule,
   MatPaginatorModule,
-  MatDialogModule
+  MatDialogModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +26,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
+import { QuestionComponent } from './list/question/question.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { ErrorComponent } from './error/error.component';
     LoginComponent,
     SignupComponent,
     ErrorComponent,
+    QuestionComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { ErrorComponent } from './error/error.component';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatCheckboxModule,
     HttpClientModule
   ],
   providers: [

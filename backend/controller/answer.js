@@ -1,28 +1,12 @@
 const Answer = require("../models/answer");
 exports.createanswer =   (req, res, next) => {
-  console.log("answer",req.body.answer);
+  console.log("I am coming from answer");
+ // console.log("answer",req.body.answer);
   //console.log("creatorid", req.userData.userId);
-
-  const answer = new Answer({
-    answer: req.body.answer,
-    questionId: req.body.questionId
+  return new Answer({
+    answer
   });
-  answer
-    .save()
-    .then(createdanswer => {
-      res.status(201).json({
-        message: "answer added successfully",
-        answer: {
-          ...createdanswer,
-          id: createdanswer._id
-        }
-      });
-    })
-    .catch(error => {
-      res.status(500).json({
-        message: "Creating a answer failed!"
-      });
-    });
+
 }
 exports.getallAnswer = (req, res, next) => {
   Answer.find()
@@ -39,3 +23,4 @@ exports.getallAnswer = (req, res, next) => {
       });
     });
 }
+
