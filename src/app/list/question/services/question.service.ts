@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 export class QuestionService {
 
   constructor(private http: HttpClient, private router: Router) { }
-  addQuestion(question: string, questionOption: Array<string>, answer: Array<string>) {
-    const postData: Question = {id: null, question:question, questionOption:questionOption, answer:answer,  creator: null};
+  addQuestion(question: string, option: Array<string>, answer: Array<string>) {
+    const postData: Question = {id: null, question:question, option:option, answer:answer,  creator: null};
     console.log('serviceData', postData);
      this.http
        .post<{ message: string; }>(

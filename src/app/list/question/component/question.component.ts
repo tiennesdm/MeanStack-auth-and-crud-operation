@@ -74,6 +74,7 @@ export class QuestionComponent implements OnInit {
       this.isLoading = true;
       this.questionArray.push(f.value.optionA, f.value.optionB, f.value.optionC, f.value.optionD);
       this.questionService.addQuestion(f.value.question, this.questionArray, this.answerArray);
+      console.log(this.questionArray);
       this.message = '' ;
       this.answerArray = [];
       this.questionArray = [];
