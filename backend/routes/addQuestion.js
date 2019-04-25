@@ -7,10 +7,14 @@ const router = express.Router();
 
 
 router.post(
-  "", checkAuth,
-  addQuestionController.createQuestion
+  "",
+  addQuestionController.createQuestion,addQuestionController.createAssigned
 );
+router.post("/multiassigned", addQuestionController.createMultiAssignedQuestion);
 router.get("",addQuestionController.getOption);
 router.get("/answer", addQuestionController.getAnswer);
+router.get("/question", addQuestionController.getArray);
+//router.get("/assigned",addQuestionController.getAssignedQuestion);
+
 
 module.exports = router;
