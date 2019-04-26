@@ -151,36 +151,46 @@ exports.getArray = (req, res, next) => {
 });
 
 }
-/*exports.getAssignedQuestion = (req, res, next) => {
+exports.getAssignedQuestion = (req, res, next) => {
  // console.log(req.body.question);
  //console.log(req.body.id);
-   list = [];
- Assigned.find({ assigner:"5cb46a3a58381b15e24f2537"}).populate(' questionId._id').exec(function(err, data) {
-  for (var order of data) {
-    console.log(order);
-      for (var article of order.questionId) {
-          console.log(article);
-      }
+   list= [[]];
+ Assigned.find({ assigner:"5cb46a3a58381b15e24f2537"}).then(result =>{
+  result.forEach(function(element) {
+    list.push(element.questionId);
+    console.log(element.questionId);
+  });
+console.log('list',list);
+var newArr = [];
+
+
+for(var i = 0; i < list.length; i++)
+{
+    newArr = newArr.concat(list[i]);
+}
+
+console.log(newArr);
+Question.find({ _id: {$in : newArr}}).populate('optionId')
+.then(userInfo => {
+  if (userInfo) {
+      res.status(200).json({ info: userInfo });
+  } else {
+      res.status(404).json({ message: "Couldnot get the Info" });
   }
 })
+.catch(error => {
+  res.status(500).json({
+      message: "Getting UserInfo Failed"
+  });
+});
+
+ })
 .catch(error => {
     res.status(500).json({
         message: "Getting UserInfo Failed"
     });
 });
-//console.log(list);
 
 }
-/*Order.find({}).populate('articles.article', null, {
-  price: {
-      $lte: 500
-  }
-}).exec(function(err, data) {
-  for (var order of data) {
-      for (var article of order.articles) {
-          console.log(article);
-      }
-  }
-}); */
 
 
