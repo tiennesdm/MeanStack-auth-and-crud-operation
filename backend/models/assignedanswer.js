@@ -1,11 +1,9 @@
 const mongoose = require("mongoose");
 
 const assignedtaskSchema = mongoose.Schema({
-  creator: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+ // creator: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   assigner: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  questionId : [ { type : mongoose.Schema.Types.ObjectId , "default" : [],required: true , ref:"Questions",
-  validate: [arrayLimit, '{PATH} more than 1']
- }],
+  //questionId :{type:}
 });
 function arrayLimit(val) {
   return val.length >=0;

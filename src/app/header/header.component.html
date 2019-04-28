@@ -7,6 +7,9 @@
     <li *ngIf="userIsAuthenticated">
       <a mat-button routerLink="/" routerLinkActive="mat-accent">Add Questions</a>
     </li>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/list" routerLinkActive="mat-accent">List</a>
+    </li>
     <li *ngIf="!userIsAuthenticated">
       <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
     </li>

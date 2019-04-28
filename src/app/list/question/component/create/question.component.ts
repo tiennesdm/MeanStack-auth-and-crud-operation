@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, ValidationErrors, Validator } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../../../auth/auth.service';
-import {QuestionService} from '../services/question.service';
+import { AuthService } from '../../../../auth/auth.service';
+import {QuestionService} from '../../services/question.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -36,10 +36,6 @@ export class QuestionComponent implements OnInit {
     .subscribe(authStatus => {
       this.isLoading = false;
     });
-    this.isLoading = true;
-    setTimeout((
-
-    )=> { this.isLoading = false;},3000);
   }
 
   onAddQuestion(f: NgForm) {

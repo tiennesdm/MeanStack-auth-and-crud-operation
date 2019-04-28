@@ -22,7 +22,7 @@ exports.createQuestion = async (req, res, next) => {
     question: req.body.question,
     optionId: option._id,
     answerId: answer._id,
-    //creator: req.userData.userId
+    creator: req.userData.userId
   });
   console.log(req.body);
 
@@ -100,6 +100,21 @@ exports.createMultiAssignedQuestion = (req, res,next) =>{
     });
   });
 
+
+}
+exports.getQuestion = (req, res, next) =>{
+  Question.find({creator:req.userData.userId}).populate('optionId').populate('answerId').then(question =>{
+    if (question) {
+      console.log(question);
+      res.status(200).json({ info: question });
+  } else {
+      res.status(404).json({ message: "Couldnot get the Info" });
+  }
+  }).catch(error =>{
+    res.status(500).json({
+      message:"Getting question Failed"
+    })
+  })
 
 }
 exports.getAnswer = (req, res,next) => {
@@ -192,5 +207,20 @@ Question.find({ _id: {$in : newArr}}).populate('optionId')
 });
 
 }
+/*exports.deleteassignedquestion = (req, res, next)=>{
+  Assigned.find({ creator:"5cb46a3a58381b15e24f2537"},{$pull: {questionId:'5cc08de28cfb65125d79c50f'}}).then(
+    res.status(500).json({
+      message: "Getting UserInfo"
+  })
+  ).catch(   res.status(500).json({
+    message: "Getting UserInfo Failed"
+}));
+}
+exports.createAssignedAnswer = (req, res, next) =>{
+  Assigned.find({ creator:"5cb46a3a58381b15e24f2537"},  {questionId: {$elemMatch:'5cc08de28cfb65125d79c50f'}}).then(
+
+  ).catch();
+
+} */
 
 
