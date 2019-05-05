@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
-//import {Question} from '../model/question.model';
+import { environment } from '../../../../environments/environment';
+
+const BACKEND_URL = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +16,20 @@ export class QuestionService {
 
 
   constructor(private http: HttpClient, private router: Router) { }
-  addQuestion(question: string, option: Array<string>, answer: Array<string>) {
-    const postData: Question = {id: null, question:question, option:option, answer:answer,  creator: null};
+  addQuestion(question: string, option: Array<string>, answer: Array<string>, email: string) {
+    const postData: Question = {id: null, question:question, option:option, answer: answer,  creator: null, email: email};
     console.log('serviceData', postData);
      this.http
        .post<{ message: string; }>(
-         'http://localhost:3000/api/addquestion/',
+        BACKEND_URL + '/addquestion/',
          postData
        )
        .subscribe(responseData => {
+         alert(responseData.message);
          this.router.navigate(['/']);
        });
    }
 getQuestions(): Observable<Question[]> {
-  return this.http.get<Question[]>('http://localhost:3000/api/addquestion/getQuestion');
+  return this.http.get<Question[]>(BACKEND_URL + '/addquestion/getQuestion');
 }
 }

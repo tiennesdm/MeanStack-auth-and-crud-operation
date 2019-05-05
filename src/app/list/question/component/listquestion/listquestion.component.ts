@@ -18,6 +18,7 @@ import {
 export class ListquestionComponent implements OnInit {
   isLoading = false;
   dataSource = new MatTableDataSource<Question>();
+
   question:Question[] = [];
 
   displayedColumns: string[] = ['Question', 'Option A', 'Option B', 'Option C', 'Option D', 'Answer'];
@@ -25,16 +26,16 @@ export class ListquestionComponent implements OnInit {
   constructor( private questionService: QuestionService) { }
 
   ngOnInit() {
-    this.questionService.getQuestions().subscribe(data =>
-      {console.log(data);
+    this.questionService.getQuestions().subscribe(result=>
+      {//console.log(data);
         this.isLoading  = true;
-      // let data2 = data.info;
-      this.dataSource.data = data.info;
+      // let data2 = data.i
+      this.dataSource.data = result;
       this.isLoading = false;
-
+    //  console.log(dataSource);
       console.log(this.dataSource.data);
     //  this.dataSource = data;
-
+console.log(this.dataSource);
       }
       );
 

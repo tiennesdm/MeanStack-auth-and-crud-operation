@@ -4,4 +4,5 @@ export interface Question {
   option: Array<String>;
   answer: Array<String>;
   creator: string;
+  email: string;
 }

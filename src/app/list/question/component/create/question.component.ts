@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, ValidationErrors, Validator } from '@angular/forms';
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../../auth/auth.service';
 import {QuestionService} from '../../services/question.service';
 import { Subscription } from 'rxjs';
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-question',
@@ -68,8 +75,9 @@ export class QuestionComponent implements OnInit {
     }
     else{
       this.isLoading = true;
+
       this.questionArray.push(f.value.optionA, f.value.optionB, f.value.optionC, f.value.optionD);
-      this.questionService.addQuestion(f.value.question, this.questionArray, this.answerArray);
+      this.questionService.addQuestion(f.value.question, this.questionArray, this.answerArray,f.value.email);
       console.log(this.questionArray);
       this.message = '' ;
       this.answerArray = [];
